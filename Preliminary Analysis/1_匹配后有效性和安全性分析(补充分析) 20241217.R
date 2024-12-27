@@ -5,7 +5,7 @@ rm(list = ls())
 Packages <- c("tidyverse", "WeightIt", "MatchIt")
 lapply(Packages, library, character.only = TRUE)
 
-source("函数汇总.R")
+source("0_函数汇总.R")
 load("./Cleaned data/data_com.rdata")
 
 # part II PNS_ONLY（B组）与LMWN_ONLY（C组）的比较 -------------------------------
@@ -20,7 +20,7 @@ B_C <-
   Efficiency_analysis_after_matching(data = as.data.frame(data_comp),
                                      id = "USUBJID",
                                      center = "SITEID",
-                                     group = c("LMWH_ONLY", "PNS_ONLY"),
+                                     group = c("PNS_ONLY", "LMWH_ONLY"),
                                      outcome = "VTE_14",
                                      treat = "ACTARM",
                                      covariates = c("AGEGR1", "SEX", "Carpini_score", "Major_surgery"),

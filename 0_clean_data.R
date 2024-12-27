@@ -58,7 +58,9 @@ ADFEE_new <- ADFEE %>%
   group_by(USUBJID, PASTGRP) %>%             # 分组
   mutate(fee = sum(as.numeric(AVAL), na.rm = TRUE)) %>%  # 费用求和
   slice(1) %>%                               # 选取每组的第一个
-  pivot_wider(id_cols = USUBJID, names_from = PASTGRP, values_from = fee)  # 将长数据转换成宽数据，用PASTGRP命名
+  pivot_wider(id_cols = USUBJID, names_from = PASTGRP, values_from = fee) %>% # 将长数据转换成宽数据，用PASTGRP命名
+  dplyr::select(-last_col()) %>%
+  mutate(总费用 = rowSums(across(where(is.numeric))), na.rm = T)  
 
 # =============================================================================.
 # 4 生命体征(ADPE) -----

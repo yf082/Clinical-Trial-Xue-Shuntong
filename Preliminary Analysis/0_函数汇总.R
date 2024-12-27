@@ -1,10 +1,4 @@
 
-# 1 查找变量名称 ----
-
-Search_name <- function(patten, data) {
-  names(data)[grep(patten, names(data))]
-}
-
 
 # 2 有效性检验函数 ----
 
